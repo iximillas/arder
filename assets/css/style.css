@@ -916,6 +916,8 @@ a,
     transform: rotate(360deg);
   }
 }
+
+
 /*--------------------------------------------------------------
 	Navbar
 --------------------------------------------------------------*/
@@ -1174,6 +1176,14 @@ a,
   position: relative;
   display: block;
   overflow: hidden;
+}
+
+.img-responsive{
+  width: 100%
+}
+
+.img-fluid{
+  width: 100%
 }
 
 .work-image {
