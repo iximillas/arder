@@ -32,7 +32,79 @@ function ssc_init() {
     if (ssc_keyboardsupport) {
         ssc_addEvent("keydown", ssc_keydown)
     }
+  
 }
+
+function ssc_wheel(e) {
+    if (!ssc_initdone) {
+        ssc_init();
+    }
+
+    var t = e.target;
+    var n = ssc_overflowingAncestor(t);
+
+    // Verifica si el evento ya fue prevenido o si se trata de un iframe o un "embed" con un PDF
+    if (!n || e.defaultPrevented || ssc_isNodeName(ssc_activeElement, "embed") || ssc_isNodeName(t, "embed") && /\.pdf/i.test(t.src)) {
+        return true; // Si se cumple alguna de estas condiciones, no hace nada.
+    }
+
+    var r = e.wheelDeltaX || 0;
+    var i = e.wheelDeltaY || 0;
+    if (!r && !i) {
+        i = e.wheelDelta || 0; // Si no se detecta desplazamiento horizontal, usa el desplazamiento vertical.
+    }
+
+    if (Math.abs(r) > 1.2) {
+        r *= ssc_stepsize / 120;
+    }
+    if (Math.abs(i) > 1.2) {
+        i *= ssc_stepsize / 120;
+    }
+
+    // Si el desplazamiento está siendo manejado, ejecuta el desplazamiento personalizado.
+    ssc_scrollArray(n, -r, -i);
+
+    // Permite el desplazamiento predeterminado en ciertas condiciones.
+    if (!e.defaultPrevented) {
+        e.preventDefault(); // Previene el desplazamiento solo si se está manejando el evento.
+    }
+}
+
+function ssc_wheel(e) {
+    if (!ssc_initdone) {
+        ssc_init();
+    }
+
+    var t = e.target;
+    var n = ssc_overflowingAncestor(t);
+
+    // Verifica si el evento ya fue prevenido o si se trata de un iframe o un "embed" con un PDF
+    if (!n || e.defaultPrevented || ssc_isNodeName(ssc_activeElement, "embed") || ssc_isNodeName(t, "embed") && /\.pdf/i.test(t.src)) {
+        return true; // Si se cumple alguna de estas condiciones, no hace nada.
+    }
+
+    var r = e.wheelDeltaX || 0;
+    var i = e.wheelDeltaY || 0;
+    if (!r && !i) {
+        i = e.wheelDelta || 0; // Si no se detecta desplazamiento horizontal, usa el desplazamiento vertical.
+    }
+
+    if (Math.abs(r) > 1.2) {
+        r *= ssc_stepsize / 120;
+    }
+    if (Math.abs(i) > 1.2) {
+        i *= ssc_stepsize / 120;
+    }
+
+    // Si el desplazamiento está siendo manejado, ejecuta el desplazamiento personalizado.
+    ssc_scrollArray(n, -r, -i);
+
+    // Permite el desplazamiento predeterminado en ciertas condiciones.
+    if (!e.defaultPrevented) {
+        e.preventDefault(); // Previene el desplazamiento solo si se está manejando el evento.
+    }
+}
+
 
 function ssc_scrollArray(e, t, n, r) {
     r || (r = 1e3);
@@ -117,8 +189,6 @@ function ssc_wheel(e) {
     if (Math.abs(i) > 1.2) {
         i *= ssc_stepsize / 120
     }
-    ssc_scrollArray(n, -r, -i);
-    e.preventDefault()
 }
 
 function ssc_keydown(e) {
