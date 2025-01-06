@@ -370,6 +370,9 @@ a,
     background-size: cover;
     background-position: center;
   }
+  .video-player {
+    display: none !important; /* Forzar que el video no sea visible */
+  }
 }
 
 .work-item {
