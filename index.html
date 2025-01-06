@@ -127,26 +127,6 @@
       </iframe>
     </div>
     
-    <iframe 
-  src="https://www.youtube-nocookie.com/embed/VIDEO_ID" 
-  loading="lazy" 
-  onload="loadYouTubeScript()">
-</iframe>
-
-<script>
-  function loadYouTubeScript() {
-    if (!document.querySelector('#youtube-script')) {
-      let script = document.createElement('script');
-      script.id = 'youtube-script';
-      script.src = 'https://www.youtube-nocookie.com/some-youtube-script.js';
-      script.defer = true;
-      document.body.appendChild(script);
-    }
-  }
-</script>
-
-
-
             </div>
           </div>
         </div>
