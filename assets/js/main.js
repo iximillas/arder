@@ -85,15 +85,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
             }
         }
         
-        document.addEventListener("DOMContentLoaded", function () {
-  const video = document.getElementById("background-video");
-  const screenWidth = window.innerWidth;
 
-  if (screenWidth <= 768) {
-    // Elimina el video para evitar su carga en móviles
-    video.parentNode.removeChild(video);
-  }
-});
 
 
 
