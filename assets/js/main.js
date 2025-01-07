@@ -33,16 +33,31 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          * Initialization General Scripts for all pages
          /* ---------------------------------------------- */
 
-        var homeSection = $('.home-section'),
-            navbar      = $('.navbar-custom'),
-            navHeight   = navbar.height(),
-            worksgrid   = $('#works-grid'),
-            width       = Math.max($(window).width(), window.innerWidth),
-            mobileTest  = false;
+         /* ---------------------------------------------- /*
+          * Initialization General Scripts for all pages
+         /* ---------------------------------------------- */
+         
+         var homeSection = $('.home-section'),
+             navbar      = $('.navbar-custom'),
+             navHeight   = navbar.height(),
+             worksgrid   = $('#works-grid'),
+             width       = Math.max($(window).width(), window.innerWidth),
+             mobileTest  = false;
+         
+         // Detecta si es un dispositivo móvil
+         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+             mobileTest = true;
+         }
+         
+         document.addEventListener("DOMContentLoaded", function () {
+             const video = document.getElementById("background-video");
+         
+             if (mobileTest) {
+                 video.style.display = "none"; // Oculta el video
+                 document.getElementById("home").style.backgroundImage = "url('assets/images/header2.webp')";
+             }
+         });
 
-        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            mobileTest = true;
-        }
 
         buildHomeSection(homeSection);
         navbarAnimation(navbar, homeSection, navHeight);
@@ -292,16 +307,6 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
             return false;
         });
 
-      
-        document.addEventListener("DOMContentLoaded", function () {
-          const video = document.getElementById("background-video");
-          const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-          if (isMobile) {
-            video.style.display = "none"; // Oculta el video
-            document.getElementById("home").style.backgroundImage = "url('assets/images/header2.webp')";
-          }
-        });
         
         /* ---------------------------------------------- /*
          * Scroll Animation
