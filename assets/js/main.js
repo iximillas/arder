@@ -84,10 +84,6 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
                 }
             }
         }
-        
-
-
-
 
         /* ---------------------------------------------- /*
          * Home section effects
@@ -297,7 +293,16 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
         });
 
       
+        document.addEventListener("DOMContentLoaded", function () {
+          const video = document.getElementById("background-video");
+          const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
+          if (isMobile) {
+            video.style.display = "none"; // Oculta el video
+            document.getElementById("home").style.backgroundImage = "url('assets/images/header2.webp')";
+          }
+        });
+        
         /* ---------------------------------------------- /*
          * Scroll Animation
          /* ---------------------------------------------- */
