@@ -364,17 +364,6 @@ a,
     z-index: -1; /* Asegura que el video esté detrás del contenido */
 }
 
-@media (max-width: 768px) {
-  .home-section {
-    background-image: url('assets/images/header2.webp');
-    background-size: cover;
-    background-position: center;
-  }
-  .video-player {
-    display: none !important; /* Forzar que el video no sea visible */
-  }
-}
-
 .work-item {
   width: 50%;
   float: left;
